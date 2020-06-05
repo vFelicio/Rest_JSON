@@ -26,7 +26,7 @@ public class CidadeResource {
 	private CidadeRepository cidadeRepo;
 	
 	@GetMapping("/lista")
-	public List<Cidade> todosAsCidades(){
+	public List<Cidade> todasAsCidades(){
 		return cidadeRepo.findAll();
 	}
 	
