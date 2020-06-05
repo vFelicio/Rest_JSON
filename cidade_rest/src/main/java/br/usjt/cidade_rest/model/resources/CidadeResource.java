@@ -41,7 +41,7 @@ public class CidadeResource {
 			return ResponseEntity.created(uri).body(c);
 		}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/id/{id}")
 	public Cidade buscarPeloId(@PathVariable Long id) {
 		return cidadeRepo.getOne(id);
 	}
@@ -63,5 +63,14 @@ public class CidadeResource {
 		cidadeRepo.delete(c);
 		
 	}
-
+	
+	@GetMapping("/nome/{nome}")
+	public List<Cidade> buscaPelaLetra(@PathVariable String nome) {
+		return cidadeRepo.findByNomeLike(nome+"%");
+	}
+	
+	@GetMapping("/latlong/{latitude}&{longitude}")
+	public Cidade buscarPelaLatLong(@PathVariable Double latitude, @PathVariable Double longitude) {
+		return cidadeRepo.findByLatitudeAndLongitude(latitude, longitude);
+	}
 }
